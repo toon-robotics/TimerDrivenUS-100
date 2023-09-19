@@ -32,11 +32,11 @@ void setup() {
   // ISRタイマー実行のためのハードウェアタイマーの設定(TimerInterrupt_Genericのサンプルコード参照)
   if (ITimer3.attachInterruptInterval(HARDWARE_TIMER_INTERVAL_MS, timerHandler))
   {
-    Serial.print(F("Starting  ITimer3 OK, millis() = ")); 
+    Serial.print(F("Starting  ITimer3, millis() = ")); 
     Serial.println(millis());
   }
   else{
-    Serial.println(F("Can't set ITimer3. Select another freq. or timer"));
+    Serial.println(F("Can't set ITimer3. Select another frequency or a timer"));
   }
 
   ///ISRタイマーの実行間隔とコールバック関数を設定
