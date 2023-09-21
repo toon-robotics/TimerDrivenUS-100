@@ -1,7 +1,7 @@
 # TimerDrivenUS-100
 
 - [English](#english-ver)
-- [日本語](#japanese-ver)
+- [日本語](#日本語版)
 
 ## English ver.
 ### Summary
