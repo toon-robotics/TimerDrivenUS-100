@@ -12,8 +12,7 @@ ISR_Timer ISR_timer;///ISRタイマー
 
 static const unsigned long HARDWARE_TIMER_INTERVAL_MS = 5UL;
 
-///US-100
-US100* us100;
+US100 us100(20,4500);///US-100。引数は最小距離と最大距離（指定しない場合デフォルト値が入る）
 
 ///ISRタイマーを利用するためのハードウェアタイマー用コールバック関数
 void timerHandler(){
@@ -24,8 +23,7 @@ void setup() {
 
   Serial.begin(9600);///シリアルモニターに表示するためのシリアル通信開始
 
-  us100 = new US100(20,4500);///US-100の作成。引数は最小距離と最大距離（指定しない場合デフォルト値が入る）
-  us100->setup();///セットアップ開始
+  us100.setup();///セットアップ開始
 
   ITimer3.init();///ハードウェアタイマー初期化
 
@@ -40,14 +38,14 @@ void setup() {
   }
 
   ///ISRタイマーの実行間隔とコールバック関数を設定
-  ISR_timer.setInterval(US100::TIMER_INTERVAL_MS, US100::ISR_timerHandler, us100);
+  ISR_timer.setInterval(US100::TIMER_INTERVAL_MS, US100::ISR_timerHandler, &us100);
 
 }
 
 
 void loop() {
 
-  int dist = us100->getDistance();
+  int dist = us100.getDistance();
         
   Serial.print("Distance: ");
   Serial.print(dist);
