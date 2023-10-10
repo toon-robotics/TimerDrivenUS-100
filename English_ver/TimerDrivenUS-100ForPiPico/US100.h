@@ -10,18 +10,18 @@ public:
         TEMP
     };
 
-    US100(unsigned int minDist = 100U, unsigned int maxDist = 2500U);///最小、最大距離を引数に
+    US100(unsigned int minDist = 100U, unsigned int maxDist = 2500U);///Minimum and maximum distances as arguments
     ~US100();
 
     void setup();
 
-    int getDistance();///距離情報を取得
-    int getTemperature();///気温情報を取得
+    int getDistance();///get distance information
+    int getTemperature();///get temperature information
 
-    void requestDistance();///距離情報取得前に距離モードに切り替える
-    void requestTemperature();///気温情報取得前に気温モードに切り替える
+    void requestDistance();///Switch to distance mode before acquiring distance information
+    void requestTemperature();///Switch to temperature mode before acquiring temperature information
 
-    static void ISR_timerHandler(void* us100ptr);///ISRタイマー用コールバック
+    static void ISR_timerHandler(void* us100ptr);///Callback for ISR Timer
 
     static const int TIMER_INTERVAL_MS = 100L;
 
